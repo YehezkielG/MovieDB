@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Movie DB</title>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/output.css">    
+    <link rel="stylesheet" href="style/output.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
 <body class="bg-zinc-200">
@@ -23,31 +24,37 @@
     <section class="bg-[url('../image/bg3.jpg')] bg-center bg-no-repeat bg-cover shadow-lg">
         <div class=" backdrop-blur-sm">
             <div class="bg-white/75 py-16 " style="margin:0 7%;">
-            <h2 class="text-center my-10 text-xl font-bold">
-                Selamat Datang di MovieDB - Jelajahi Dunia Film yang Tak Terbatas!
-            </h2>
-            <div class="m-auto my-10 w-3/4 flex items-center rounded-lg overflow-hidden">
-                <input type="text" class="w-full bg-white/70  p-2 text-black placeholder:text-black outline-none"
-                    placeholder="Cari sebuah Movie, TV-Series, Actor">
-                <input type="button" class="w-2/12  p-2 border-l-0 cursor-pointer blue1 text-white" value="Search">
+                <h2 class="text-center my-10 text-xl font-bold">
+                    Selamat Datang di MovieDB - Jelajahi Dunia Film yang Tak Terbatas!
+                </h2>
+                <div class="m-auto my-10 w-3/4 flex items-center rounded-lg overflow-hidden">
+                    <input type="text" class="w-full bg-white/70  p-2 text-black placeholder:text-black outline-none"
+                        placeholder="Cari sebuah Movie, TV-Series, Actor">
+                    <input type="button" class="w-2/12  p-2 border-l-0 cursor-pointer blue1 text-white" value="Search">
+                </div>
             </div>
-        </div>
         </div>
     </section>
     <section>
-    <div class="p-2 inline-block bg-white rounded-ss-xl rounded-se-xl  blue1" style="margin: 0 7%; margin-top: 25px;">
-        <div class="flex items-center">
-        <img src="image/icons8-trending-64.png" alt="" srcset="" style="width: 30px;">
-        <span class="text-2xl font-bold">
-            Trending Movie
-        </span>
+        <div class="p-2 inline-block bg-white rounded-ss-xl rounded-se-xl blue1"
+            style="margin: 0 7%; margin-top: 25px;">
+            <div class="flex items-center">
+                <img src="image/icons8-trending-64.png" alt="" srcset="" style="width: 30px;">
+                <span class="text-2xl font-bold mx-2">
+                    Trending Movie
+                </span>
+                <div class="rounded-2xl text-xl" style="border: 1px solid #4B70F5">
+                    <button class="px-2 m-0 rounded-2xl" id="todayTrending">Today</button>
+                    <button class="px-2 m-0 rounded-2xl" id="thisweekTrending">This Week</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div style="margin: 0 7%;" class=" bg-white p-4 rounded-2xl overflow-hidden rounded-ss-none">
-        <div class="trendingMovie overflow-auto flex">
+        <div style="margin: 0 7%;" class="bg-white p-4 rounded-2xl overflow-hidden rounded-ss-none">
+            <div class="trendingMovie overflow-auto flex">
 
+            </div>
         </div>
-    </div></section>
+    </section>
     <footer class="mt-4 bg-white">
         Yehzkiel Haganta &copy; 2024
     </footer>
