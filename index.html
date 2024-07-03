@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/output.css">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 </head>
 
 <body class="bg-zinc-200">
@@ -36,21 +36,33 @@
         </div>
     </section>
     <section>
-        <div class="p-2 inline-block bg-white rounded-ss-xl rounded-se-xl blue1"
-            style="margin: 0 7%; margin-top: 25px;">
+        <div class="p-2 inline-block rounded-ss-xl rounded-se-xl"
+            style="margin: 20px 7%;">
             <div class="flex items-center">
                 <img src="image/icons8-trending-64.png" alt="" srcset="" style="width: 30px;">
                 <span class="text-2xl font-bold mx-2">
                     Trending Movie
                 </span>
-                <div class="rounded-2xl text-xl" style="border: 1px solid #4B70F5">
-                    <button class="px-2 m-0 rounded-2xl" id="todayTrending">Today</button>
-                    <button class="px-2 m-0 rounded-2xl" id="thisweekTrending">This Week</button>
-                </div>
             </div>
         </div>
         <div style="margin: 0 7%;" class="bg-white p-4 rounded-2xl overflow-hidden rounded-ss-none">
-            <div class="trendingMovie overflow-auto flex">
+            <div class="overflow-auto flex" id="Trending">
+
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="p-2 inline-block rounded-ss-xl rounded-se-xl"
+            style="margin: 20px 7%;">
+            <div class="flex items-center">
+                <img src="image/icons8-trending-64.png" alt="" srcset="" style="width: 30px;">
+                <span class="text-2xl font-bold mx-2">
+                   Terpopuler
+                </span>
+            </div>
+        </div>
+        <div style="margin: 0 7%;" class="bg-white p-4 rounded-2xl overflow-hidden rounded-ss-none">
+            <div class="overflow-auto flex" id="Popular">
 
             </div>
         </div>
