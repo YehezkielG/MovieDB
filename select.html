@@ -14,19 +14,19 @@
     <span class="m-4 float-right  w-auto">
         <div class="flex items-center bg-blue-400 p-1 rounded-md">
             <input id="day" type="text" class="w-28 outline-none cursor-default" value="Hari ini" readonly>
-            <span class="text-center px-2 cursor-pointer" style="font-size: 10px;" onmousedown="entah()">
+            <span class="text-center px-2 cursor-pointer" style="font-size: 10px;" onclick="entah()">
                 ▼
             </span>
         </div>
-        <div class="mx-1 bg-white w-28 hidden">Hari ini</div>
-        <div  class="mx-1 bg-white w-28 hidden" id="migguIni">Minggu ini</div>
+        <div class="mx-1 cursor-pointer bg-white w-28 hidden">Hari ini</div>
+        <div class="mx-1 cursor-pointer bg-white w-28 hidden" id="mingguIni">Minggu ini</div>
     </span>
 
 </body>
 <script>
     function entah(){
-        alert("konsol");
         if(document.getElementById("day").value == 'Hari ini'){
+            console.log(document.getElementById("mingguIni"));
             document.getElementById("mingguIni").classList.remove("hidden");
         }
     }

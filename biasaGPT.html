@@ -3,145 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Select Example</title>
-    <style>
-        /* Style the select box */
-        .custom-select {
-            position: relative;
-            display: inline-block;
-        }
-
-        .custom-select select {
-            display: none; /*hide the default select element*/
-        }
-
-        .select-selected {
-            background-color: #e5e5e5;
-        }
-
-        /* Style the arrow inside the select element: */
-        .select-selected:after {
-            content: "";
-            position: absolute;
-            top: 14px;
-            right: 10px;
-            width: 0;
-            height: 0;
-            border: 6px solid transparent;
-            border-color: #000 transparent transparent transparent;
-        }
-
-        /* Style the items (options), including the selected item: */
-        .select-items div, .select-selected {
-            color: black;
-            padding: 8px 16px;
-            border: 1px solid transparent;
-            border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        /* Style items (options): */
-        .select-items {
-            position: absolute;
-            background-color: #f9f9f9;
-            top: 100%;
-            left: 0;
-            right: 0;
-            z-index: 99;
-        }
-
-        /* Hide the items when the select box is closed: */
-        .select-hide {
-            display: none;
-        }
-
-        .select-items div:hover, .same-as-selected {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <div class="custom-select">
-        <select>
-            <option value="0">Select car:</option>
-            <option value="1">Audi</option>
-            <option value="2">BMW</option>
-            <option value="3">Citroen</option>
-            <option value="4">Ford</option>
-            <option value="5">Honda</option>
-            <option value="6">Jaguar</option>
-            <option value="7">Land Rover</option>
-            <option value="8">Mercedes</option>
-            <option value="9">Mini</option>
-            <option value="10">Nissan</option>
-            <option value="11">Toyota</option>
-            <option value="12">Volvo</option>
-        </select>
-    </div>
-
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const x = document.getElementsByClassName('custom-select');
-            const l = x.length;
-            for (let i = 0; i < l; i++) {
-                const selElmnt = x[i].getElementsByTagName('select')[0];
-                const ll = selElmnt.length;
-                const a = document.createElement('DIV');
-                a.setAttribute('class', 'select-selected');
-                a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-                x[i].appendChild(a);
-                const b = document.createElement('DIV');
-                b.setAttribute('class', 'select-items select-hide');
-                for (let j = 1; j < ll; j++) {
-                    const c = document.createElement('DIV');
-                    c.innerHTML = selElmnt.options[j].innerHTML;
-                    c.addEventListener('click', function (e) {
-                        const s = this.parentNode.parentNode.getElementsByTagName('select')[0];
-                        const sl = s.length;
-                        const h = this.parentNode.previousSibling;
-                        for (let i = 0; i < sl; i++) {
-                            if (s.options[i].innerHTML == this.innerHTML) {
-                                s.selectedIndex = i;
-                                h.innerHTML = this.innerHTML;
-                                const y = this.parentNode.getElementsByClassName('same-as-selected');
-                                const yl = y.length;
-                                for (let k = 0; k < yl; k++) {
-                                    y[k].removeAttribute('class');
-                                }
-                                this.setAttribute('class', 'same-as-selected');
-                                break;
-                            }
-                        }
-                        h.click();
-                    });
-                    b.appendChild(c);
-                }
-                x[i].appendChild(b);
-                a.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    closeAllSelect(this);
-                    this.nextSibling.classList.toggle('select-hide');
-                    this.classList.toggle('select-arrow-active');
-                });
-            }
-            function closeAllSelect(elmnt) {
-                const x = document.getElementsByClassName('select-items');
-                const y = document.getElementsByClassName('select-selected');
-                const xl = x.length;
-                const yl = y.length;
-                for (let i = 0; i < yl; i++) {
-                    if (elmnt == y[i]) {
-                        continue;
-                    }
-                    y[i].classList.remove('select-arrow-active');
-                }
-                for (let i = 0; i < xl; i++) {
-                    x[i].classList.add('select-hide');
-                }
-            }
-            document.addEventListener('click', closeAllSelect);
-        });
+        const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMWQyZDcxM2U5MWM3MzJjYWMzNGQ0ZTdjNGRhOWUzZCIsIm5iZiI6MTcyMDE4OTAyMC4wMDA1NDEsInN1YiI6IjY2NjliMzg4NDc0MmYyZmM1NjViM2Y5MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.AisyyWje1rQIURhHHRV0T6KcHATnvpBmk8Ylu4JDzAI'
+  }
+};
+
+fetch('https://api.themoviedb.org/3/movie/280180/recommendations?language=en-US&page=1', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
     </script>
 </body>
 </html>

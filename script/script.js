@@ -25,12 +25,16 @@ async function request(){
     const year = date.substr(0,4);
     const month = monthFormat[parseInt(date.substr(6,7))-1];
     const div = document.createElement("div");
-    div.className = "text-black inline-block p-2 rounded-xl m-2 shadow-lg cursor-pointer";
+    div.className = "text-black inline-block p-2 rounded-xl m-2 shadow-xl cursor-pointer";
     div.style.Width = "200px";
     div.innerHTML = `
     <img src="https://image.tmdb.org/t/p/w300${v.poster_path}" alt="" style = "min-width: 200px;" style='m-4'>
     <p class="truncate font-bold" style="width:200px">${Object.values(v)[4]}</p>
-    <small class="text-sm text-gray-500"> ${month} ${year}</small>`
+    <p class="my-1">
+    <span class="text-sm text-gray-500"> ${month} ${year}</span>
+    <span class="float-right">${v.vote_average.toPrecision(2)}⭐</span>
+    </p>
+    `
     document.querySelector(`#${ResponseView[index]}`).appendChild(div);
     })
   })
