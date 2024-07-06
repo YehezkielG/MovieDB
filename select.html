@@ -1,35 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style/output.css">
-    <link rel="stylesheet" href="style/style.css">
 </head>
-
-<body class="bg-slate-300 ">
-
-    <span class="m-4 float-right  w-auto">
-        <div class="flex items-center bg-blue-400 p-1 rounded-md">
-            <input id="day" type="text" class="w-28 outline-none cursor-default" value="Hari ini" readonly>
-            <span class="text-center px-2 cursor-pointer" style="font-size: 10px;" onclick="entah()">
-                ▼
-            </span>
-        </div>
-        <div class="mx-1 cursor-pointer bg-white w-28 hidden">Hari ini</div>
-        <div class="mx-1 cursor-pointer bg-white w-28 hidden" id="mingguIni">Minggu ini</div>
-    </span>
-
+<body class="bg-zinc-100 m-10">
+<button class="bg-white  p-2 border-2 border-gray-50 shadow-xl rounded-xl ">Subscribe</button>
 </body>
-<script>
-    function entah(){
-        if(document.getElementById("day").value == 'Hari ini'){
-            console.log(document.getElementById("mingguIni"));
-            document.getElementById("mingguIni").classList.remove("hidden");
-        }
-    }
-</script>
-
 </html>

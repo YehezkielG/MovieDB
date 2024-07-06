@@ -15,3 +15,7 @@ body{
 .blue1{
     background: #4B70F5;
 }
+.bg-header{
+    background: rgb(75,112,245);
+    background: linear-gradient(90deg, rgba(75,112,245,1) 0%, rgba(76,59,207,1) 97%);
+}
