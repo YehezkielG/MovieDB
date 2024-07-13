@@ -8,7 +8,8 @@ const options = {
 
 let url = {
   Trendingmovie: fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options).then(response => response.json()),
-  Trendingtv: fetch('https://api.themoviedb.org/3/trending/tv/day?language=en-US', options).then(response => response.json())
+  Trendingtv: fetch('https://api.themoviedb.org/3/trending/tv/day?language=en-US', options).then(response => response.json()),
+  mendatang: fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',options).then(response => response.json())
 }
 
 const monthFormat = ["Jan", "Feb", "Mar", "Apr", "May", "June", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -20,9 +21,10 @@ async function request(url) {
   let result = request;
   console.log(result);
   result.forEach((value, index) => {
+    console.log(value.results);
     document.querySelector(`#${displayResponse[index]}`).innerHTML = "";
     value.results.forEach((v) => {
-      const date = Object.values(v)[11];
+      const date = index == 2 ? v.release_date : Object.values(v)[11];
       const year = date.substr(0, 4);
       const month = monthFormat[parseInt(date.substr(6, 7)) - 1];
       const div = document.createElement("div");
@@ -49,7 +51,7 @@ function skeleton_loading(url) {
       skeleton +=
         `<div class="text-black inline-block p-2 rounded-xl m-2 shadow-xl border-2 border-gray-50 cursor-pointer ">
       <div class="animate-pulse">
-        <div class="bg-zinc-200" style="width:200PX; height:300px;"></div>
+        <div class="bg-zinc-200" style="width:200PX; height:303px;"></div>
         <p class="my-2 bg-zinc-200 h-4"></p>
         <p class="my-1 bg-zinc-200 h-4"></p>
       </div>
@@ -59,10 +61,18 @@ function skeleton_loading(url) {
   })
 }
 
-function setDayTrending(element) {
-  const day = element.innerHTML == "hari ini" ? "day" : "week";
+const type = ['movie','tv'];
+
+document.querySelectorAll("#selectDay").forEach((select,index)=>{
+  select.addEventListener("input",()=>{
+    console.log(type[index]);
+    setTrending(select.value,type[index]);
+  })
+})
+
+function setTrending(day,type) {
   const url = {};
-  url["Trending" + element.value] = fetch(`https://api.themoviedb.org/3/trending/${element.value}/${day}?language=en-US`, options).then(response => response.json());
+  url["Trending" + type] = fetch(`https://api.themoviedb.org/3/trending/${type}/${day}?language=en-US`, options).then(response => response.json());
   console.log(url);
   skeleton_loading(url);
   setTimeout(() => {

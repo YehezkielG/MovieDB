@@ -16,9 +16,9 @@
         <h2 class="logo text-3xl font-bold">MovieDB</h2>
         <nav class="float-righ">
             <ul class="flex text-gray-300">
-                <li class="mx-2 p-1 px-2 rounded-md hover:text-white hover:bg-blue-400"><a href="#">Movie</a></li>
-                <li class="mx-2 p-1 px-2 rounded-md hover:text-white hover:bg-blue-400"><a href="#">TV Series</a></li>
-                <li class="mx-2 p-1 px-2 rounded-md hover:text-white hover:bg-blue-400"><a href="#">People</a></li>
+                <li class="mx-2 p-1 px-2 rounded-md hover:text-white hover:bg-white/30"><a href="#">Movie</a></li>
+                <li class="mx-2 p-1 px-2 rounded-md hover:text-white hover:bg-white/30"><a href="#">TV Series</a></li>
+                <li class="mx-2 p-1 px-2 rounded-md hover:text-white hover:bg-white/30"><a href="#">People</a></li>
             </ul>
         </nav>
     </header>
@@ -45,8 +45,10 @@
                 </span>
             </div>
             <div class="float-right">
-                <button class="py-1 px-2 bg-blue-500 text-white rounded-xl" onclick="setDayTrending(this)" value="movie">hari ini</button>
-                <button class="py-1 px-2 bg-white rounded-xl" onclick="setDayTrending(this)" value="movie">minggu ini</button>
+                <select name="movie" id="selectDay" class="outline-none border-2 border-blue-400 m-3 rounded-md p-1 bg-white px-1">
+                    <option value="day">Hari ini</option>
+                    <option value="week">Minggu ini</option>
+                </select>
             </div>
         </div>
         <div class="bg-white p-4 rounded-2xl overflow-hidden">
@@ -62,12 +64,38 @@
                 </span>
             </div>
             <div class="float-right">
-                <button class="py-1 px-2 bg-blue-500 text-white rounded-xl" onclick="setDayTrending(this)" value="tv">hari ini</button>
-                <button class="py-1 px-2 bg-white rounded-xl" onclick="setDayTrending(this)" value="tv">minggu ini</button>
+                <select name="" id="selectDay" class="outline-none border-2 border-blue-400 m-3 rounded-md p-1 bg-white px-1">
+                    <option value="day">Hari ini</option>
+                    <option value="week">Minggu ini</option>
+                </select>
             </div>
         </div>
         <div class="bg-white p-4 rounded-2xl overflow-hidden">
             <div class="overflow-auto flex" id="Trendingtv"></div>
+        </div>
+    </section>
+    <section style="margin: 0 7%;">
+        <div class="flex items-center">
+            <img src="image/tv-show-96.png" style="width: 35px">
+            <span class="text-2xl font-bold mx-3">
+               Orang Yang Sedang Trend
+            </span>
+        </div>
+        
+    </section>
+    <section style="margin: 0 7%;">
+        <div class="flex items-center justify-between" style="margin: 20px 0;">
+            <div class="flex items-center">
+                <img src="image/upcoming.png" style="width: 35px">
+                <span class="text-2xl font-bold mx-3">
+                    Movie Mendatang
+                </span>
+            </div>
+            <div class="float-right">
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl overflow-hidden">
+            <div class="overflow-auto flex" id="mendatang"></div>
         </div>
     </section>
     <footer class="mt-4 bg-white">
