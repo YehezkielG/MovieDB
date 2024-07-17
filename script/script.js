@@ -80,7 +80,28 @@ function setTrending(day,type) {
   }, 700);
 }
 
+async function orang(){
+  const request = await fetch('https://api.themoviedb.org/3/person/popular?language=en-US&page=1', options);
+  const response = await request.json();
+  console.log(response)
+  const results = response.results.slice(0,5);
+  console.log(results)
+  results.forEach((people)=>{
+    const div = document.createElement("div");
+    let known = people.known_for;
+    known = known.map((value)=>value.title)
+    div.className = "bg-white rounded-ss-xl rounded-se-xl overflow-hiddenn shadow-sm"
+    div.innerHTML = `
+    <img src="https://image.tmdb.org/t/p/w300${people.profile_path}" alt="" class="">
+    <p class="bg-white font-semibold">${people.name}</p>
+    <p class="text-gray-600">${known}</p>
+    `;
+
+    document.getElementById("People").appendChild(div);
+  })
+}
 document.body.onload = () => {
+  orang();
   skeleton_loading(url);
   setTimeout(() => {
     request(url);
