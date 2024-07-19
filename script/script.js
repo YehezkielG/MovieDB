@@ -15,30 +15,31 @@ let url = {
 const monthFormat = ["Jan", "Feb", "Mar", "Apr", "May", "June", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 async function request(url) {
-  let displayResponse = Object.keys(url);
+  let urlName = Object.keys(url);
+  console.log(urlName)
   url = Object.values(url);
   let request = await Promise.all(url);
   let result = request;
   console.log(result);
   result.forEach((value, index) => {
     console.log(value.results);
-    document.querySelector(`#${displayResponse[index]}`).innerHTML = "";
+    document.querySelector(`#${urlName[index]}`).innerHTML = "";
     value.results.forEach((v) => {
       const date = index == 2 ? v.release_date : Object.values(v)[11];
       const year = date.substr(0, 4);
       const month = monthFormat[parseInt(date.substr(6, 7)) - 1];
       const div = document.createElement("div");
-      div.className = "text-black inline-block p-2 rounded-xl m-2 shadow-xl border-2 border-gray-50 cursor-pointer";
+      div.className = "text-black inline-block p-2 rounded-xl m-2 shadow-xl cursor-pointer hover:grayscale-[30%]";
       div.style.Width = "200px";
       div.innerHTML = `
-    <img src="https://image.tmdb.org/t/p/w300${v.poster_path}" alt="" style = "min-width: 200px;" style='m-4'>
-    <p class="truncate font-bold" style="width:200px">${Object.values(v)[4]}</p>
+    <img src="https://image.tmdb.org/t/p/w300${v.poster_path}" alt="" style = "min-width: 200px;">
+    <p class="truncate font-bold" style="width:200px">${urlName[index] == "Trendingtv" ? v.original_name : v.original_title}</p>
     <p class="my-1">
     <span class="text-sm text-gray-500"> ${month} ${year}</span>
     <span class="float-right">${v.vote_average.toPrecision(2)}⭐</span>
     </p>
     `
-      document.querySelector(`#${displayResponse[index]}`).appendChild(div);
+      document.querySelector(`#${urlName[index]}`).appendChild(div);
     })
   })
 }
@@ -77,24 +78,24 @@ function setTrending(day,type) {
   skeleton_loading(url);
   setTimeout(() => {
     request(url);
-  }, 700);
+  }, 500);
 }
 
 async function orang(){
-  const request = await fetch('https://api.themoviedb.org/3/person/popular?language=en-US&page=1', options);
+  const request = await fetch('https://api.themoviedb.org/3/person/popular?language=en-ID&page=1', options);
   const response = await request.json();
   console.log(response)
-  const results = response.results.slice(0,5);
+  const results = response.results.slice(0,6);
   console.log(results)
   results.forEach((people)=>{
     const div = document.createElement("div");
     let known = people.known_for;
     known = known.map((value)=>value.title)
-    div.className = "bg-white rounded-ss-xl rounded-se-xl overflow-hiddenn shadow-sm"
+    div.className = "bg-white rounded-xl overflow-hidden shadow-sm cursor-pointer"
     div.innerHTML = `
     <img src="https://image.tmdb.org/t/p/w300${people.profile_path}" alt="" class="">
-    <p class="bg-white font-semibold">${people.name}</p>
-    <p class="text-gray-600">${known}</p>
+    <p class="bg-white font-semibold px-2">${people.name}</p>
+    <p class="text-gray-600 px-2">${known}</p>
     `;
 
     document.getElementById("People").appendChild(div);
@@ -105,5 +106,5 @@ document.body.onload = () => {
   skeleton_loading(url);
   setTimeout(() => {
     request(url);
-  }, 700)
+  }, 500)
 }
