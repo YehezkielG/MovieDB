@@ -19,3 +19,13 @@ body{
     background: rgb(75,112,245);
     background: linear-gradient(90deg, rgba(75,112,245,1) 0%, rgba(76,59,207,1) 97%);
 }
+
+.limited-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 3em; /* 1.5em per line, adjust based on line height */
+    line-height: 1.5em; /* Adjust based on your needs */
+}
