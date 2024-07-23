@@ -81,8 +81,8 @@ function setTrending(day,type) {
   }, 500);
 }
 
-async function orang(url){
-  const request  = await fetch(url,options)
+async function orang(){
+  const request  = await fetch('https://api.themoviedb.org/3/person/popular?language=en-ID&page=1',options)
   const response = await request.json();
   console.log(response)
   const results = response.results.slice(0,6);
@@ -103,7 +103,7 @@ async function orang(url){
   })
 }
 document.body.onload = () => {
-  orang('https://api.themoviedb.org/3/person/popular?language=en-ID&page=1');
+  orang();
   skeleton_loading(url);
   setTimeout(() => {
     request(url);
