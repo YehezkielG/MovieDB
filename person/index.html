@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,36 @@
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/output.css">
 </head>
-<body>
-    
+
+<body class="bg-zinc-200">
+    <header class="p-4 flex justify-between items-center text-white bg-header">
+        <h2 class="logo text-3xl font-bold">MovieDB</h2>
+        <nav class="float-righ">
+            <ul class="flex text-gray-300">
+                <li class="mx-2 p-1 px-2 rounded-md hover:text-white hover:bg-white/30"><a href="#">Movie</a></li>
+                <li class="mx-2 p-1 px-2 rounded-md hover:text-white hover:bg-white/30"><a href="#">TV Series</a></li>
+                <li class="mx-2 p-1 px-2 rounded-md hover:text-white hover:bg-white/30"><a href="#">People</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="personBiograph" style="margin:30px 7%;" class="flex">
+        <div class="border-2 border-black" >
+            <img src="" alt="" class="rounded-lg w-2/5" style="width: 300px;">
+        </div>
+        <div class="px-5">
+            <p id="Name" class="text-black text-3xl font-bold"></p>
+            <p id="Biograph"></p>
+            <p>Kelahiran  <span id="birth"></span></p>
+            <p>Jenis kelamin  <span id="gender"></span></p>
+            <p>Jenis kelamin  <span id="gender"></span></p>
+        </div>
+    </section>
+    <footer class="mt-10 bg-white py-5">
+        <p class="text-lg text-center">
+            Yehzkiel Haganta | © Movie DB 2024
+        </p>
+    </footer>
+    <script src="ScriptPerson.js"></script>
 </body>
+
 </html>
