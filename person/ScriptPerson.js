@@ -13,12 +13,11 @@ async function getPerson(){
     const request = await fetch(`https://api.themoviedb.org/3/person/${personId}?language=en-US`,options);
     console.log(request.status);
     if(request.status !== 200){
-      console.log("kwontol");
       document.location = "../index.html"
     }
     const response = await request.json();
     console.log(response);
-    document.querySelector("#personBiograph img").src = `https://image.tmdb.org/t/p/w300/${response.profile_path}`;
+    document.querySelector("#personBiograph img").src = `https://media.themoviedb.org/t/p/w300${response.profile_path}`;
     document.querySelector("#Name").textContent = response.name;
     document.querySelector("#Biograph").textContent = response.biography;
 }

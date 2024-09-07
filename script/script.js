@@ -29,7 +29,7 @@ async function request(url) {
       const year = date.substr(0, 4);
       const month = monthFormat[parseInt(date.substr(6, 7)) - 1];
       const div = document.createElement("div");
-      div.className = "text-black inline-block p-2 rounded-xl m-2 shadow-xl cursor-pointer hover:grayscale-[30%]";
+      div.className = "text-black inline-block p-2 rounded-xl m-2 shadow-xl cursor-pointer hover:grayscale-[30%] bg-white";
       div.style.Width = "200px";
       div.innerHTML = `
     <img src="https://image.tmdb.org/t/p/w300${v.poster_path}" alt="" style = "min-width: 200px;">
@@ -50,7 +50,7 @@ function skeleton_loading(url) {
     let skeleton = "";
     for (let i = 0; i < 20; i++) {
       skeleton +=
-        `<div class="text-black inline-block p-2 rounded-xl m-2 shadow-xl border-2 border-gray-50 cursor-pointer ">
+        `<div class="text-black inline-block p-2 rounded-xl m-2 shadow-xl border-2 border-gray-50 cursor-pointer bg-white">
       <div class="animate-pulse">
         <div class="bg-zinc-200" style="width:200PX; height:303px;"></div>
         <p class="my-2 bg-zinc-200 h-4"></p>
@@ -98,7 +98,6 @@ async function orang(){
     <p class="bg-white font-semibold  px-3">${people.name}</p>
     <p class="text-gray-600 px-3 limited-lines">${known}</p>
     `;
-
     document.getElementById("PopularPeople").appendChild(div);
   })
 }
