@@ -29,7 +29,7 @@ async function request(url) {
       const year = date.substr(0, 4);
       const month = monthFormat[parseInt(date.substr(6, 7)) - 1];
       const div = document.createElement("div");
-      div.className = "text-black inline-block p-2 rounded-xl m-2 shadow-xl cursor-pointer hover:grayscale-[30%] bg-white";
+      div.className = "text-black inline-block p-2 rounded-xl mr-2 mb-4 shadow-xl cursor-pointer hover:grayscale-[30%] bg-white";
       div.style.Width = "200px";
       div.innerHTML = `
     <img src="https://image.tmdb.org/t/p/w300${v.poster_path}" alt="" style = "min-width: 200px;">
@@ -64,12 +64,20 @@ function skeleton_loading(url) {
 
 const type = ['movie','tv'];
 
-document.querySelectorAll("#selectDay").forEach((select,index)=>{
-  select.addEventListener("input",()=>{
-    console.log(type[index]);
+document.querySelectorAll("#day").forEach((select,index)=>{
+  select.addEventListener("click",()=>{
     setTrending(select.value,type[index]);
   })
 })
+
+document.querySelectorAll('day').forEach((checkbox,index)=>{
+  checkbox.addEventListener("click",function(){
+    if(this.checked){
+      
+    }
+  })
+})
+
 
 function setTrending(day,type) {
   const url = {};
@@ -81,7 +89,7 @@ function setTrending(day,type) {
   }, 500);
 }
 
-async function orang(){
+async function popularPerson(){
   const request  = await fetch('https://api.themoviedb.org/3/person/popular?language=en-ID&page=1',options)
   const response = await request.json();
   console.log(response)
@@ -101,8 +109,9 @@ async function orang(){
     document.getElementById("PopularPeople").appendChild(div);
   })
 }
+
 document.body.onload = () => {
-  orang();
+  popularPerson();
   skeleton_loading(url);
   setTimeout(() => {
     request(url);
